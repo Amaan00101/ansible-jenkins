@@ -1,0 +1,16 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                // Run the Ansible playbook
+                ansiblePlaybook(
+                    playbook: '/home/einfochips/Music/jenkins-ansible/playbook.yml',
+                    inventory: '/home/einfochips/Music/jenkins-ansible/inventory.ini',
+                    credentialsId: 'ansible-credential'
+                )
+            }
+        }
+    }
+}
